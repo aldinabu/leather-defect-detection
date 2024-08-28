@@ -20,22 +20,22 @@ def process(image, path_to_save, img_name):
     flipped = tf.image.flip_left_right(image)
     saturated = tf.image.adjust_brightness(image, 0.3)
     bright = tf.image.flip_up_down(image)
-    # hue = tf.image.adjust_hue(image, 0.3)
+    hue = tf.image.adjust_hue(image, 0.3)
     random_hue = tf.image.random_hue(image, 0.5)
     flipped_saturated = tf.image.adjust_saturation(flipped, 1)
     rotated = tf.image.rot90(image)
-    #for i in range(3):
-     #   seed = (i, 0)
-     #   stateless_random_brightness = tf.image.stateless_random_hue(image, max_delta=0.5, seed=seed)
-     #   save_image(stateless_random_brightness, path_to_save, img_name + '_random_hue_' + str(i))
+    for i in range(3):
+       seed = (i, 0)
+       stateless_random_brightness = tf.image.stateless_random_hue(image, max_delta=0.5, seed=seed)
+       save_image(stateless_random_brightness, path_to_save, img_name + '_random_hue_' + str(i))
 
-    #save_image(flipped, path_to_save, img_name + '_flipped')
-    #save_image(flipped_saturated, path_to_save, img_name + '_flipped_saturated')
+    save_image(flipped, path_to_save, img_name + '_flipped')
+    save_image(flipped_saturated, path_to_save, img_name + '_flipped_saturated')
     save_image(saturated, path_to_save, img_name + '_saturated')
-    #save_image(hue, path_to_save, img_name + '_quality')
-    #save_image(random_hue, path_to_save, img_name + '_random_hue')
-    #save_image(bright, path_to_save, img_name + '_flipped_up_down')
-    #save_image(rotated, path_to_save, img_name + '_rotated')
+    save_image(hue, path_to_save, img_name + '_quality')
+    save_image(random_hue, path_to_save, img_name + '_random_hue')
+    save_image(bright, path_to_save, img_name + '_flipped_up_down')
+    save_image(rotated, path_to_save, img_name + '_rotated')
 
 
 def data_augmentation(path_or, path_for_saving):
@@ -121,4 +121,11 @@ def merge_tiles(tiles, img_path):
         img_path, stacked_vert
     )
     print('Image merged back successfully!')
+
+
+if __name__ == "__main__":
+    look_for_images = './images/bmp/*.jpg'
+    path = config['AUGMENTATION']['path_for_saving']
+    data_augmentation(config['AUGMENTATION']['image_path_for_augmentation'], config['AUGMENTATION']['path_for_saving'])
+
 

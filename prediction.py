@@ -1,4 +1,3 @@
-import glob
 import os
 
 import cv2
@@ -85,7 +84,7 @@ def extract_patch(image_path):
             if cropped_width < roi_width or cropped_height < roi_height:
                 continue
 
-            path = './image' + str(roi_y) + 'check.png'
+            path = './images/' + str(roi_y) + 'check.png'
             cv2.imwrite(path, roi)
 
             predicted = get_prediction(path, True)
@@ -145,12 +144,3 @@ def get_color(color_name):
     }
 
     return colors.get(color_name)
-
-
-if __name__ == "__main__":
-    look_for_images = './images/39/kaggle/Growth marks/*.jpg'
-    images = [file for file in glob.glob(look_for_images)]
-    for img in images:
-        #extract_patch(img)
-        defect = get_prediction(img)
-        log_prediction(img, defect)
