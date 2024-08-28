@@ -22,6 +22,7 @@ On the menu tab, click on the second option. Upload the image. Click on the butt
 
 >[!IMPORTANT]
 >Add model state dict used for prediction. Change 'model_net_state_dict' value in [config](config.ini) file.
+>Models can be found [here](https://drive.google.com/drive/folders/1NesZNsi5JWpzChZQLjaHUvgmJUjwjKuZ).
 
 
 
@@ -40,8 +41,11 @@ flask run --host=0.0.0.0
 
 Application is now hosted [here](http://localhost:5000/).
 
-
->[!INFO]
+## TRAINING
+>[!NOTE]
 >This project contains also Jupyter notebooks for training Inception-V3 CNN with our created dataset.
 >Notebooks can be found [here](jupyter-notebooks/) .
->Dataset can be downloaded from .....
+>Notebook for extracting patches is located [here](jupyter-notebooks/Tiling.ipynb)
+>Code for augmentation is located [here](augmentation.py)
+>
+>**Dataset can be downloaded from [here](https://drive.google.com/drive/folders/1aqO3FYSDB8YBaPnf1mMSPvC4nkpJojt6?usp=sharing)**
