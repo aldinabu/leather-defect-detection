@@ -39,3 +39,9 @@ flask run --host=0.0.0.0
 ```
 
 Application is now hosted [here](http://localhost:5000/).
+
+
+>[!INFO]
+>This project contains also Jupyter notebooks for training Inception-V3 CNN with our created dataset.
+>Notebooks can be found [here](jupyter-notebooks/) .
+>Dataset can be downloaded from .....
