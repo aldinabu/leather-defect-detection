@@ -1,0 +1,123 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="group text-center">
+  <form class="p-3 text-center">
+    <table class="table align-center">
+      <thead>
+        <tr>
+          <th scope="col">Image to be detected</th>
+          <th scope="col" colspan="2">Image with predicted fields</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="prediction-inputs">
+          <td colspan="3">
+            <input class="form-control float-start" type="file" name="imagefile1" id="imagefile1"
+              accept="image/jpg, image/bmp, image/jpeg, image/png">
+          </td>
+          <td colspan="2">
+          </td>
+        </tr>
+        <tr class="prediction-images">
+          <td style="width:50%">
+            <div class="mx-auto m-2 p-1 text-center image-box" id="imageContainer1">
+              <img alt="Image to be predicted" id="img1" class="text-center image-input"/>
+            </div>
+          </td>
+          <td style="width:50%">
+            <div class="mx-auto m-2 p-1 text-center image-box" id="imageContainer2">
+              <img alt="Annotated image" id="img2" class="image-input" />
+            </div>
+          </td>
+          <td>
+            <div class="d-flex flex-column justify-content-between py-1">
+              <div class="red-rectangle tt m-2 align-self-stretch py-4">
+                <span class="tooltiptext">Structural irreparable defect</span>
+              </div>
+              <div class="green-rectangle tt m-2 align-self-stretch py-4">
+                <span class="tooltiptext">Structural repairable defect</span>
+              </div>
+              <div class="blue-rectangle tt m-2 align-self-stretch py-4">
+                <span class="tooltiptext">Textural defect</span>
+              </div>
+              <div class="yellow-rectangle tt m-2 align-self-stretch py-4">
+                <span class="tooltiptext">Discoloration</span>
+              </div>
+              <div class="orange-rectangle tt m-2 align-self-stretch py-4">
+                <span class="tooltiptext">Microdefect</span>
+              </div>
+              <div class="transparent-rectangle tt m-2 align-self-stretch py-4">
+                <span class="tooltiptext">Non defective</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="prediction-actions">
+          <td colspan="2">
+            <span class="float-start text-start">
+              (The detection process may take some time.)
+            </span>
+          </td>
+          <td class="align-middle">
+            <button class="btn btn-primary float-end" disabled type="button" value="Predict Image"
+              id="predict-button" onclick="tile_and_predict()">Detect</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+
+<script>
+
+ $("#imagefile1").change(function (){
+    $("#predict-button").text("Detektuj").removeAttr("disabled")
+});
+
+
+  $("#imagefile1").on("change", function () {
+    const file1 = event.target.files[0];
+    if (file1) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        $("#img1").attr('src', e.target.result);
+        const imageContainer = document.getElementById('imageContainer1');
+      }
+      reader.readAsDataURL(file1);
+    }
+  })
+
+  $("#imagefile2").on("change", function () {
+    const file1 = event.target.files[0];
+    if (file1) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        $("#img2").attr('src', e.target.result);
+        const imageContainer = document.getElementById('imageContainer2');
+      }
+      reader.readAsDataURL(file1);
+    }
+  })
+
+
+
+  /*document.getElementById('imagefile2').addEventListener('change', function (event) {
+      const file2 = event.target.files[0];
+      if (file2) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+              const imgElement = document.createElement('img2');
+              imgElement.src = e.target.result;
+              const imageContainer = document.getElementById('imageContainer2');
+              imageContainer.innerHTML = '';
+              imageContainer.appendChild(imgElement);
+          }
+          reader.readAsDataURL(file2);
+
+      }
+  }); */
+
+</script>
+
+
+{% endblock %}

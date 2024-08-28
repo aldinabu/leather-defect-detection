@@ -1,0 +1,34 @@
+{
+    "defects": [
+        {
+            "name": "Textural defect",
+            "num": 4,
+            "color": "blue"
+        },
+        {
+            "name": "Discoloration",
+            "num": 0,
+            "color": "yellow"
+        },
+        {
+            "name": "Structural irreparable defect",
+            "num": 3,
+            "color": "red"
+        },
+        {
+            "name": "Structural repairable defect",
+            "num": 2,
+            "color": "green"
+        },
+        {
+            "name": "Microdefect",
+            "num": 1,
+            "color": "orange"
+        },
+        {
+            "name": "Non defective",
+            "num": 5,
+            "color": "None"
+        }
+    ]
+}

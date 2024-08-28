@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="home p-3">
+    <div class="group">
+        <form class="text-center">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Image classification and patches extraction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="prediction-inputs">
+                        <td>
+                            <input class="form-control" type="file" name="imagefile" id="imagefile"
+                                accept="image/jpg, image/bmp, image/jpeg, image/png">
+                        </td>
+                    </tr>
+                    <tr class="prediction-images">
+                        <td>
+                            <div class="mx-auto m-2 p-1 text-center image-box" id="imageContainer">
+                                <img alt="Image to be classified" id="img" class ="image-input" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="prediction-actions">
+                        <td colspan="2">
+                            <button class="btn btn-primary mr-2 mt-2 float-end ms-2" type="button" value="Predict Image"
+                                id="predict-button" onclick="predict()">Classify</button>
+                            <button class="btn btn-secondary mt-2 float-end" type="button" value="tiling"
+                                id="tile-button" onclick="tile()">Extract patches</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="defect-class"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script>
+    $("#imagefile").on("change", function () {
+        const file1 = event.target.files[0];
+        if (file1) {
+            console.log(file1)
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                $("#img").attr('src', e.target.result);
+                const imageContainer = document.getElementById('imageContainer');
+            }
+            reader.readAsDataURL(file1);
+        }
+    })
+</script>
+{% endblock %}
